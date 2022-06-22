@@ -1,0 +1,204 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap');
+
+
+
+:root {
+  --color1: #283d42;
+  --color2: #314a4d;
+  --color3: #426262;
+  --color4: #5e8682;
+  --color5: #86b9ad;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+  font-family: 'Chakra petch';
+  background-color: var(--color2);
+}
+
+header {
+  height: 50px;
+  width: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 50px;
+}
+
+#abrir-modal {
+  width: 50px;
+  height: 30px;
+  background-color: transparent;
+  color: white;
+  border: 0;
+  transition: .2s;
+}
+
+#abrir-modal:hover {
+  width: 50px;
+  height: 30px;
+  background-color: white;
+  border-radius: 100px;
+  color: black;
+}
+
+#main {
+  background-color: var(--color1);
+  color: white;
+  height: 100%;
+  width: 100%;
+  margin: 30px 10px;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 25px;
+}
+
+#form {
+  background-color: var(--color3); 
+  height: auto;
+  width: auto;
+  margin: 70px 50px;
+  border-radius: 5px;
+}
+
+#f-texto {
+  margin: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;  
+}
+
+#f-opciones {
+  width: auto;
+  height: auto;
+  margin: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: baseline;
+}
+
+.card {
+  width: 250px;
+  height: 200px;
+  background-color: var(--color2);
+  margin: 50px;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 150px;
+  height: auto;
+  margin: 5px;
+}
+
+.f-boton {
+  text-align: center;
+  margin: 20px;
+}
+
+.agregar {
+  background-color: mediumseagreen;
+  color: white;
+  font-family: 'Chakra petch';
+  border: 0;
+  border-radius: 5px;
+  height: 25px;
+  width: 100px;
+  font-size: 16px;
+  transition: .2s;
+}
+
+.agregar:hover {
+  color: mediumseagreen;
+  background-color: white;
+}
+
+.t-total {
+  font-size: 25px;
+}
+
+.eliminar {
+  color: red;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.modal-container {
+  color: black;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s all ease-in-out;
+}
+
+.modal-carrito {
+  background-color: white;
+  width: 350px;
+  border-radius: 20px;
+  min-height: 370px;
+  padding: 20px;
+}
+
+.modal-carrito #carrito-cerrar {
+  background-color: rgb(245, 83, 83);
+  color: white;
+  height: 20px;
+  width: 20px;
+  border: 0;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.modal-carrito #carrito-cerrar:hover {
+  background-color: white;
+  color: rgb(245, 83, 83);
+}
+
+#carrito-contenedor #tacho {
+  color: red;
+  background: transparent;
+  border: 0;
+}
+
+.modal-carrito #vaciar-carrito {
+  background-color: rgb(245, 83, 83);
+  color: white;
+  height: 30px;
+  width: 100px;
+  border: 0;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.modal-carrito #vaciar-carrito:hover {
+  background-color: white;
+  color: rgb(245, 83, 83);
+}
+
+.modal-container-visible {
+  opacity: 1;
+  visibility: visible;
+}

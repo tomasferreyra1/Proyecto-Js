@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4f694de3db.js" crossorigin="anonymous"></script>
+    <script defer src="stock.js"></script>
+    <script defer src="modal.js"></script>
+    <script defer src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <title>Desafío DOM</title>
+</head>
+<body>
+    
+    <div id="main">
+        
+        <header>
+            <h1>O-CADEMY</h1>
+            <button id="abrir-modal"><i class="fa-solid fa-cart-arrow-down"></i><span id="contador-carrito">0</span></button>
+        </header>
+        
+        
+        <h2>Bienvenido a la tienda</h2>
+        
+        <p id="info">Aqui encontrarás todo tipo de cursos relacionados con el desarrollo web</p>
+
+        <div id="form">
+            <div id="f-texto">
+                <p>
+                    Seleccione el/los producto/s que desee adquirir : 
+                </p>
+            </div>
+
+            <div id="f-opciones">
+                <!-- <div class="card">
+                    <img src="img/html.jpg" alt="">
+                    <p>Curso HTML</p>
+                    <p>$5 uds</p>
+                    <div class="f-boton">
+                        <button class="agregar">Agregar <i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div> -->
+            </div>
+            
+        </div> 
+
+        <div class="modal-container">
+            <div class="modal-carrito">
+            
+                <h3>Carrito</h3>
+                <button id="carrito-cerrar"><i class="fa-solid fa-xmark"></i></button>
+            
+                <div id="carrito-contenedor">
+                    <!-- <div class="productoEnCarrito">
+                        <p>Curso Html</p>
+                        <p>Precio: $5 uds</p>
+                        <button class="boton-eliminar"><i class="fa-solid fa-trash" id="tacho"></i></button>
+                    </div> -->
+                </div>
+                <p class="t-total">Precio Total: $<span id="precioTotal">0</span></p>
+                <button id="vaciar-carrito" class="boton-eliminar">Vaciar carrito</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>

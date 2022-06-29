@@ -1,5 +1,5 @@
 
-// -- MODAL --
+// -- MODAL CARRTO --
 
 const modalContainer = document.querySelector('.modal-container')
 const openModal = document.querySelector('#abrir-modal')
@@ -21,3 +21,4 @@ modalContainer.addEventListener('click', () => {
 modalCarrito.addEventListener('click', (event) => {
     event.stopPropagation()
 })
+

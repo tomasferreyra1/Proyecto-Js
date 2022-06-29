@@ -22,13 +22,18 @@ html {
   background-color: var(--color2);
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 header {
-  height: 50px;
+  min-height: 50px;
   width: auto;
   padding: 30px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin: 20px 50px;
 }
 
@@ -52,8 +57,6 @@ header {
 #main {
   background-color: var(--color1);
   color: white;
-  height: 100%;
-  width: 100%;
   margin: 30px 10px;
   align-items: center;
   position: relative;
@@ -66,16 +69,21 @@ h2 {
   padding: 25px;
 }
 
+#info {
+  margin: 0 10px;
+}
+
 #form {
   background-color: var(--color3); 
-  height: auto;
-  width: auto;
-  margin: 70px 50px;
+  height: 90%;
+  width: 90%;
+  margin: 100px 50px;
   border-radius: 5px;
 }
 
 #f-texto {
   margin: 10px;
+  padding: 20px 5px;
   text-align: center;
   margin-bottom: 10px;
   font-size: 20px;  
@@ -107,6 +115,9 @@ h2 {
 .f-boton {
   text-align: center;
   margin: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .agregar {

@@ -32,8 +32,19 @@ StockDeProductos.forEach((producto) => {
 // --CARRITO--
 
 function agregarCarrito(id) {
-    const itemB = stockProductos.find((el) => el.id === id)
-    carrito.push(itemB)
+    const item = stockProductos.find((el) => el.id === id)
+    carrito.push(item)
+
+    Toastify({
+        text: `Se agregó ${item.nombre} al carrito!`,
+        position: "right",
+        gravity: "bottom",
+        duration: 2000,
+        className: "btnToastify",
+        style: {
+          background: "linear-gradient(to right, #056bba, #02a3df)",
+        }
+    }).showToast();
     
     localStorage.setItem('carrito',JSON.stringify(carrito))
     
@@ -46,6 +57,17 @@ const removerCarrito = (id) => {
     const item = carrito.find((producto) => producto.id === id)
     const indice = carrito.indexOf(item)
     carrito.splice(indice,1)
+
+    Toastify({
+        text: `Se eliminó ${item.nombre} del carrito!`,
+        position: "right",
+        gravity: "bottom",
+        duration: 2000,
+        className: "btnToastify",
+        style: {
+          background: "linear-gradient(to right, ##df0202, ##b81423, #8d2947)",
+        }
+    }).showToast();
     
     localStorage.setItem('carrito',JSON.stringify(carrito))
 
@@ -55,10 +77,30 @@ const removerCarrito = (id) => {
 }
 
 const removerTotalCarrito = () => {
-    carrito.splice(0,carrito.length)
+    carrito.splice(0,carrito.length)        
     
-    localStorage.setItem('carrito',JSON.stringify(carrito))
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger',
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Estas seguro?',
+        text: "No puedes revertir los cambios!",
+        icon: 'warning',
+        showCancelButton: true,
+        background:"rgba(34,34,34,0.9)",
+        color:"white",
+        confirmButtonText: 'Si, vaciar!',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      
+    })
 
+    localStorage.setItem('carrito',JSON.stringify(carrito))
     genCarrito()
     genCantidad()
     genTotal()
@@ -102,6 +144,7 @@ const genTotal = () => {
 // JSON carrito
 let carrito 
 const carritoEnLs = JSON.parse(localStorage.getItem('carrito'))
+
 if (carritoEnLs) {
     carrito = carritoEnLs
 

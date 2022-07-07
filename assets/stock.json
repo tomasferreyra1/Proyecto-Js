@@ -1,0 +1,8 @@
+[
+    {"id": 1, "nombre": "Curso de HTML", "precio": 5 , "img": "./img/html.jpg"},
+    {"id": 2, "nombre": "Curso de CSS", "precio": 10, "img": "./img/css.jpg"},
+    {"id": 3, "nombre": "Curso de Javascript", "precio": 12, "img": "./img/js.jpg"},
+    {"id": 4, "nombre": "Curso de desarrollo Frontend", "precio": 20, "img": "./img/frontend.jpg"},
+    {"id": 5, "nombre": "Curso de desarrollo Backend", "precio": 25, "img": "./img/backend.jpg"},
+    {"id": 6, "nombre": "Curso de desarrollo Full Stack", "precio": 40, "img": "./img/fullstack.jpg"}
+]

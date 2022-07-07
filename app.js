@@ -7,36 +7,47 @@ const precioTotal = document.querySelector('#precioTotal')
 const vaciarCarrito = document.querySelector('#vaciar-carrito')
 
 
+let stock = []
+
 // JSON stock de productos
-localStorage.setItem('stock',JSON.stringify(stockProductos))
-const StockDeProductos = JSON.parse(localStorage.getItem('stock'))
-
-
 // genera el DOM de los items
-StockDeProductos.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('form')
-    
-    div.innerHTML = `
-    <div class="card">
-    <img src= ${producto.img} alt="">
-    <p> ${producto.nombre} </p>
-    <p> $${producto.precio} uds </p>
-    <div class="f-boton">
-    <button onclick="agregarCarrito( ${producto.id} )" class="agregar">Agregar <i class="fa-solid fa-cart-shopping"></i></button>
-    </div>
-    `
-    productosContainer.append(div)
-})
+fetch('./assets/stock.json')
+    .then((resp) => resp.json())
+    .then((data) => {
+
+        stock = data
+
+        console.log(data)
+        stock.forEach((producto) => {
+            const div = document.createElement('div')
+            div.classList.add('form')
+            
+            const {img,nombre,precio,id} = producto
+        
+            div.innerHTML = `
+            <div class="card">
+            <img src= ${img} alt="">
+            <p> ${nombre} </p>
+            <p> $${precio} uds </p>
+            <div class="f-boton">
+            <button onclick="agregarCarrito( ${id} )" class="agregar">Agregar <i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            `
+            productosContainer.append(div)
+        })
+    })
+
 
 // --CARRITO--
 
 function agregarCarrito(id) {
-    const item = stockProductos.find((el) => el.id === id)
+    const item = stock.find((el) => el.id === id)
     carrito.push(item)
 
+    const {nombre} = item
+
     Toastify({
-        text: `Se agregó ${item.nombre} al carrito!`,
+        text: `Se agregó ${nombre} al carrito!`,
         position: "right",
         gravity: "bottom",
         duration: 2000,
@@ -58,8 +69,10 @@ const removerCarrito = (id) => {
     const indice = carrito.indexOf(item)
     carrito.splice(indice,1)
 
+    const {nombre} = item
+
     Toastify({
-        text: `Se eliminó ${item.nombre} del carrito!`,
+        text: `Se eliminó ${nombre} del carrito!`,
         position: "right",
         gravity: "bottom",
         duration: 2000,
@@ -91,6 +104,7 @@ const removerTotalCarrito = () => {
         title: 'Estas seguro?',
         text: "No puedes revertir los cambios!",
         icon: 'warning',
+        padding: "50px",
         showCancelButton: true,
         background:"rgba(34,34,34,0.9)",
         color:"white",
@@ -115,12 +129,13 @@ const genCarrito = () => {
     
     carrito.forEach((item) => {
         const div = document.createElement('div')
+        const {nombre,precio,id} = item
         div.classList.add('productoEnCarrito')
         
         div.innerHTML = `
-        <p> ${item.nombre} </p>
-        <p>Precio: $${item.precio} uds </p>
-        <button onclick="removerCarrito( ${item.id} )" class="boton-eliminar"><i class="fa-solid fa-trash" id="tacho"></i></button>
+        <p> ${nombre} </p>
+        <p>Precio: $${precio} uds </p>
+        <button onclick="removerCarrito( ${id} )" class="boton-eliminar"><i class="fa-solid fa-trash" id="tacho"></i></button>
         `
         carritoContainer.append(div)
     })
@@ -133,6 +148,7 @@ const genCantidad = () => {
 
 const genTotal = () => {
     let total = 0
+    
     carrito.forEach((producto) => {
         total += producto.precio
     })

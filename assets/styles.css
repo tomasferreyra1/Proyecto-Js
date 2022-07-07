@@ -223,3 +223,11 @@ h2 {
 .btnToastify {
   border-radius: 10px;
 }
+
+.confirmButton {
+  margin: 10px;
+}
+
+.cancelutton {
+  margin: 10px;
+}

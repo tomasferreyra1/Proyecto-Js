@@ -14,15 +14,13 @@ let stock = []
 fetch('./assets/stock.json')
     .then((resp) => resp.json())
     .then((data) => {
+        stock = data,
 
-        stock = data
-
-        console.log(data)
         stock.forEach((producto) => {
             const div = document.createElement('div')
             div.classList.add('form')
             
-            const {img,nombre,precio,id} = producto
+            const {img,nombre,precio,id,} = producto
         
             div.innerHTML = `
             <div class="card">
@@ -35,8 +33,7 @@ fetch('./assets/stock.json')
             `
             productosContainer.append(div)
         })
-    })
-
+    });
 
 // --CARRITO--
 
@@ -92,27 +89,24 @@ const removerCarrito = (id) => {
 const removerTotalCarrito = () => {
     carrito.splice(0,carrito.length)        
     
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger',
-        },
-        buttonsStyling: false
-      })
-      
-      swalWithBootstrapButtons.fire({
+    Swal.fire({
         title: 'Estas seguro?',
-        text: "No puedes revertir los cambios!",
+        text: 'No puedes revertir los cambios!',
         icon: 'warning',
-        padding: "50px",
         showCancelButton: true,
-        background:"rgba(34,34,34,0.9)",
-        color:"white",
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
         confirmButtonText: 'Si, vaciar!',
-        cancelButtonText: 'No, cancelar!',
-        reverseButtons: true
-      
-    })
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Vaciado',
+            'Tu carrito fue vaciado.',
+            'success'
+          )
+        }
+      })
+
 
     localStorage.setItem('carrito',JSON.stringify(carrito))
     genCarrito()
